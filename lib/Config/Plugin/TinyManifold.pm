@@ -12,7 +12,7 @@ use vars qw(@EXPORT @ISA);
 @EXPORT = ('config_manifold');
 @ISA    = ('Exporter');
 
-our $VERSION = '1.00';
+our $VERSION = '1.01';
 
 # --------------------------------------------------
 
@@ -55,12 +55,14 @@ Config::Plugin::TinyManifold - A plugin which uses Config::Tiny with 1 of N sect
 
 	use Config::Plugin::TinyManifold; # For config_manifold().
 
+	use File::Spec;
+
 	# ------------------------------------------------
 
 	sub marine
 	{
 		my($self)   = @_;
-		my($config) = $self -> config_manifold('/some/dir/config.tiny.manifold.ini');
+		my($config) = $self -> config_manifold(File::Spec -> catfile('some', 'dir', 'config.tiny.manifold.ini') );
 
 	} # End of marine.
 
@@ -190,10 +192,6 @@ L<CGI::Application>
 The following are all part of this set of distros:
 
 L<CGI::Snapp> - A almost back-compat fork of CGI::Application
-
-L<CGI::Snapp::Plugin::Forward> - A plugin for CGI::Snapp to switch cleanly to another run mode within the same app
-
-L<CGI::Snapp::Plugin::Redirect> - A plugin for CGI::Snapp to simplify using HTTP redirects
 
 L<CGI::Snapp::Demo::One> - A template-free demo of CGI::Snapp using just 1 run mode
 
